@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechAura Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* ACCORDION ANIMATION LOGIC */
+        .split-panel {
+            flex: 1;
+            transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 80px; /* Mobile minimum height */
+        }
+
+        /* Desktop: Expand width on hover */
+        @media (min-width: 768px) {
+            .split-panel:hover {
+                flex: 8; 
+            }
+        }
+
+        /* Tech Background Pattern */
+        .tech-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Text Animation Logic */
+        .panel-content {
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            transition: all 0.4s ease 0.1s;
+            white-space: nowrap; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Show content on hover */
+        .split-panel:hover .panel-content {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .panel-content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .split-panel {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+
+        /* Large Background Numbers (01, 02...) */
+        .index-number {
+            font-size: 12rem;
+            font-weight: 700;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: 0;
+        }
+        
+        .split-panel:hover .index-number {
+            opacity: 0.15;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        h2 { text-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col md:flex-row relative">
+
+    <div class="absolute top-0 w-full z-50 pointer-events-none flex justify-center pt-8">
+        <div class="bg-black/60 backdrop-blur-xl border border-white/10 px-10 py-4 rounded-full shadow-2xl">
+            <h1 class="text-xl md:text-2xl font-bold tracking-[0.4em] uppercase text-white text-center">
+                TechAura Websites
+            </h1>
+        </div>
+    </div>
+
+    <a href="https://akshajanand.github.io/techaurawebsitethreatdetector/" class="split-panel group bg-slate-900 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-cyan-500">01</span>
+        <div class="panel-content z-10">
+            <span class="text-cyan-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-cyan-500/30 px-3 py-1 rounded-full bg-cyan-900/20">Deep Web</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Website Threat Detector</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/techaurasprint/" class="split-panel group bg-indigo-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-indigo-500">02</span>
+        <div class="panel-content z-10">
+            <span class="text-indigo-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-indigo-500/30 px-3 py-1 rounded-full bg-indigo-900/20">The</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Sprinter</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/techaurasentinel/" class="split-panel group bg-emerald-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-emerald-500">03</span>
+        <div class="panel-content z-10">
+            <span class="text-emerald-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-emerald-500/30 px-3 py-1 rounded-full bg-emerald-900/20">The Password</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Breach Detector(TechAura Setinel)</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/techaurapasswordchecker/" class="split-panel group bg-rose-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-rose-500">04</span>
+        <div class="panel-content z-10">
+            <span class="text-rose-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-rose-500/30 px-3 py-1 rounded-full bg-rose-900/20">The Password</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Security Check</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/techauragame/" class="split-panel group bg-amber-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-amber-500">05</span>
+        <div class="panel-content z-10">
+            <span class="text-amber-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-amber-500/30 px-3 py-1 rounded-full bg-amber-900/20">The 3d</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Digital Game</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/techaurachatbot/" class="split-panel group bg-violet-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-violet-500">06</span>
+        <div class="panel-content z-10">
+            <span class="text-violet-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-violet-500/30 px-3 py-1 rounded-full bg-violet-900/20">The Digital Literacy</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">AI Chatbot</h2>
+        </div>
+    </a>
+
+    <a href="https://akshajanand.github.io/digisafetytest/" class="split-panel group bg-teal-950 border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+        <span class="index-number text-teal-500">07</span>
+        <div class="panel-content z-10">
+            <span class="text-teal-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-teal-500/30 px-3 py-1 rounded-full bg-teal-900/20">The Digital</span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Safety Test</h2>
+        </div>
+    </a>
+
+    <script>
+        // Smooth entrance animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const panels = document.querySelectorAll('.split-panel');
+            panels.forEach((panel, index) => {
+                panel.style.transform = 'translateY(100%)';
+                
+                setTimeout(() => {
+                    panel.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), flex 0.6s ease';
+                    panel.style.transform = 'translateY(0)';
+                }, index * 80);
+            });
+        });
+    </script>
+</body>
+</html>
