@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechAura Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
@@ -20,17 +21,15 @@
             transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
             position: relative;
             overflow: hidden;
-            min-height: 80px; /* Mobile minimum height */
+            min-height: 80px;
         }
 
-        /* Desktop: Expand width on hover */
         @media (min-width: 768px) {
             .split-panel:hover {
                 flex: 8; 
             }
         }
 
-        /* Tech Background Pattern */
         .tech-grid {
             background-image: 
                 linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -38,25 +37,22 @@
             background-size: 40px 40px;
         }
 
-        /* Text Animation Logic */
         .panel-content {
             opacity: 0;
             transform: translateY(10px) scale(0.95);
             transition: all 0.4s ease 0.1s;
-            white-space: nowrap; 
+            white-space: nowrap;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* Show content on hover */
         .split-panel:hover .panel-content {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .panel-content {
                 opacity: 1;
@@ -67,7 +63,6 @@
             }
         }
 
-        /* Large Background Numbers (01, 02...) */
         .index-number {
             font-size: 12rem;
             font-weight: 700;
@@ -87,8 +82,54 @@
         }
 
         h2 { text-shadow: 0 0 20px rgba(0,0,0,0.5); }
+
+
+        /* ================================
+           FIX 1 — MOBILE SCALING + SCROLLING
+        ================================= */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+            }
+
+            .split-panel {
+                min-height: 160px !important;
+                flex: none !important;
+                width: 100% !important;
+            }
+
+            .panel-content h2 {
+                font-size: 2rem !important;
+                white-space: normal !important;
+                text-align: center;
+            }
+
+            .index-number {
+                font-size: 6rem !important;
+            }
+        }
+
+
+        /* ================================
+           FIX 2 — HEADER NOT COVERING OPTION 01
+        ================================= */
+        @media (max-width: 768px) {
+
+            body {
+                padding-top: 120px !important; /* pushes content down */
+            }
+
+            .absolute.top-0 {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body class="h-screen w-screen flex flex-col md:flex-row relative">
 
     <div class="absolute top-0 w-full z-50 pointer-events-none flex justify-center pt-8">
@@ -99,7 +140,7 @@
         </div>
     </div>
 
-    <a href="https://akshajanand.github.io/techaurawebsitethreatdetector/" class="split-panel group bg-slate-900 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techaurawebsitethreatdetector/" class="split-panel group bg-slate-900 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-cyan-500">01</span>
         <div class="panel-content z-10">
             <span class="text-cyan-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-cyan-500/30 px-3 py-1 rounded-full bg-cyan-900/20">Deep Web</span>
@@ -107,7 +148,7 @@
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/techaurasprint/" class="split-panel group bg-indigo-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techaurasprint/" class="split-panel group bg-indigo-950 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-indigo-500">02</span>
         <div class="panel-content z-10">
             <span class="text-indigo-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-indigo-500/30 px-3 py-1 rounded-full bg-indigo-900/20">The</span>
@@ -115,15 +156,15 @@
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/techaurasentinel/" class="split-panel group bg-emerald-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techaurasentinel/" class="split-panel group bg-emerald-950 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-emerald-500">03</span>
         <div class="panel-content z-10">
             <span class="text-emerald-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-emerald-500/30 px-3 py-1 rounded-full bg-emerald-900/20">The Password</span>
-            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Breach Detector(TechAura Setinel)</h2>
+            <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Breach Detector (TechAura Sentinel)</h2>
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/techaurapasswordchecker/" class="split-panel group bg-rose-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techaurapasswordchecker/" class="split-panel group bg-rose-950 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-rose-500">04</span>
         <div class="panel-content z-10">
             <span class="text-rose-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-rose-500/30 px-3 py-1 rounded-full bg-rose-900/20">The Password</span>
@@ -131,15 +172,15 @@
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/techauragame/" class="split-panel group bg-amber-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techauragame/" class="split-panel group bg-amber-950 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-amber-500">05</span>
         <div class="panel-content z-10">
-            <span class="text-amber-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-amber-500/30 px-3 py-1 rounded-full bg-amber-900/20">The 3d</span>
+            <span class="text-amber-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-amber-500/30 px-3 py-1 rounded-full bg-amber-900/20">The 3D</span>
             <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tighter">Digital Game</h2>
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/techaurachatbot/" class="split-panel group bg-violet-950 md:border-r border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/techaurachatbot/" class="split-panel group bg-violet-950 md:border-r border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-violet-500">06</span>
         <div class="panel-content z-10">
             <span class="text-violet-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-violet-500/30 px-3 py-1 rounded-full bg-violet-900/20">The Digital Literacy</span>
@@ -147,7 +188,7 @@
         </div>
     </a>
 
-    <a href="https://akshajanand.github.io/digisafetytest/" class="split-panel group bg-teal-950 border-white/5 tech-grid flex items-center justify-center text-decoration-none cursor-pointer">
+    <a href="https://akshajanand.github.io/digisafetytest/" class="split-panel group bg-teal-950 border-white/5 tech-grid flex items-center justify-center cursor-pointer">
         <span class="index-number text-teal-500">07</span>
         <div class="panel-content z-10">
             <span class="text-teal-400 text-xs font-bold tracking-[0.3em] mb-2 uppercase border border-teal-500/30 px-3 py-1 rounded-full bg-teal-900/20">The Digital</span>
@@ -156,12 +197,10 @@
     </a>
 
     <script>
-        // Smooth entrance animation
         document.addEventListener('DOMContentLoaded', () => {
             const panels = document.querySelectorAll('.split-panel');
             panels.forEach((panel, index) => {
                 panel.style.transform = 'translateY(100%)';
-                
                 setTimeout(() => {
                     panel.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), flex 0.6s ease';
                     panel.style.transform = 'translateY(0)';
@@ -169,5 +208,6 @@
             });
         });
     </script>
+
 </body>
 </html>
